@@ -1,7 +1,6 @@
 import Lottie from "lottie-react";
 import aanimation from "../../public/Lottie1.json";
 import animationlottie from "../../public/Lottie2.json";
-import Drawer from "./Drawer";
 
 const Chat = ({ msg }) => {
   const isUser = msg.sender === "user";
