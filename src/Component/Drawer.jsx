@@ -2,8 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FiMenu, FiHome, FiUser, FiSettings } from "react-icons/fi";
 import AllchatData from "./AllchatData";
+import { IoCloseOutline } from "react-icons/io5";
 
-const Drawer = ({ collapsed, setCollapsed }) => {
+const Drawer = ({ collapsed, setCollapsed, open, setOpen }) => {
   const [chat, setChat] = useState([]);
 
   useEffect(() => {
@@ -25,17 +26,25 @@ const Drawer = ({ collapsed, setCollapsed }) => {
           collapsed ? "w-20" : "w-64"
         }`}
       >
-        {/* Toggle Button */}
+        {/* Mobile Menu Toggle */}
         <button
+          onClick={() => setOpen(!open)}
+          className="lg:hidden p-4 focus:outline-none text-gray-800"
+        >
+          <IoCloseOutline size={24} />
+        </button>
+
+        {/* Large screen Collapse Toggle */}
+        <label
           onClick={() => setCollapsed(!collapsed)}
-          className="p-4 focus:outline-none"
+          className="p-4 focus:outline-none hidden lg:block"
           aria-label="Toggle Sidebar"
         >
           <FiMenu size={24} />
-        </button>
+        </label>
 
         {/* Menu Items */}
-        <nav className="flex flex-col mt-4 space-y-2">
+        <nav className="flex flex-col mt-2 space-y-2">
           <a href="#" className="flex items-center gap-3 p-3 rounded">
             <FiHome size={24} />
             {!collapsed && <span>Home</span>}
@@ -50,6 +59,7 @@ const Drawer = ({ collapsed, setCollapsed }) => {
           </a>
         </nav>
       </div>
+
       <div>
         {!collapsed && (
           <main className="flex-1 p-6  transition-all duration-300 ease-in-out">

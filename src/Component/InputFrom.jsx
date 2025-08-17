@@ -8,7 +8,7 @@ const InputFrom = ({ handleSend, input, setInput }) => {
           e.preventDefault();
           handleSend();
         }}
-        className="relative p-4 flex gap-2"
+        className="relative p-4 flex gap-2 bg-amber-"
       >
         <textarea
           className="textarea flex-1 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring ease-in-out"
